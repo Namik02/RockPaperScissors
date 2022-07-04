@@ -42,7 +42,10 @@ function game() {
         console.log(playRound(cs,ps))
         const pg = playRound(cs,ps)
         if (pg.substring(0,8) === "You Win!") {
-            score = score + 1
+            score++
+        }
+        if (pg === "You Drew!" || pg === "You Entered A Incorrect Value") {
+            i--
         }
      }
     if (score > 2) {
