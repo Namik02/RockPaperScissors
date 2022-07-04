@@ -34,16 +34,25 @@ function playRound(computerSelection,playerSelection) {
 }
 
 function game() {
-    const score = 0
+    let score = 0
     for (let i = 0; i < 5; i++) {
         const cs = computerSelection()
         const ps = playerSelection()
         console.log("The Computer Chose " + cs + " And You Chose " + ps)
         console.log(playRound(cs,ps))
+        const pg = playRound(cs,ps)
+        if (pg.substring(0,8) === "You Win!") {
+            score = score + 1
+        }
      }
+    if (score > 2) {
+        return "FINAL: YOU WIN!"
+    } else {
+        return "FINAL: YOU LOOSE!"
+    }
 }
 
-game()
+console.log(game())
 
 // const cs = computerSelection()
 // const ps = playerSelection()
