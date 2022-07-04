@@ -33,9 +33,19 @@ function playRound(computerSelection,playerSelection) {
 
 }
 
+function game() {
+    const score = 0
+    for (let i = 0; i < 5; i++) {
+        const cs = computerSelection()
+        const ps = playerSelection()
+        console.log("The Computer Chose " + cs + " And You Chose " + ps)
+        console.log(playRound(cs,ps))
+     }
+}
 
+game()
 
-const cs = computerSelection()
-const ps = playerSelection()
-console.log("The Computer Chose " + cs + " And You Chose " + ps)
-console.log(playRound(cs,ps))
+// const cs = computerSelection()
+// const ps = playerSelection()
+// console.log("The Computer Chose " + cs + " And You Chose " + ps)
+// console.log(playRound(cs,ps))
