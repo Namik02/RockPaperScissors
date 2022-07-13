@@ -3,11 +3,12 @@ function computerSelection() {
     const cInput = options[Math.floor(Math.random() * 3)]
     return cInput
 }
-
+let ps = ""
 function playerSelection() {
-    let pInput = prompt("Play by entering Rock/Paper/Scissors")
-    const pInput1 = pInput.substring(0,1).toUpperCase() + pInput.substring(1).toLowerCase()
-    return pInput1
+    // let pInput = prompt("Play by entering Rock/Paper/Scissors")
+    let pInput = ps
+    // const pInput1 = pInput.substring(0,1).toUpperCase() + pInput.substring(1).toLowerCase()
+    return ps
 }
 
 function playRound(computerSelection,playerSelection) {
@@ -33,31 +34,59 @@ function playRound(computerSelection,playerSelection) {
 
 }
 
-function game() {
-    let score = 0
-    for (let i = 0; i < 5; i++) {
-        const cs = computerSelection()
-        const ps = playerSelection()
-        console.log("The Computer Chose " + cs + " And You Chose " + ps)
-        console.log(playRound(cs,ps))
-        const pg = playRound(cs,ps)
-        if (pg.substring(0,8) === "You Win!") {
-            score++
-        }
-        if (pg === "You Drew!" || pg === "You Entered A Incorrect Value") {
-            i--
-        }
-     }
-    if (score > 2) {
-        return "FINAL: YOU WIN!"
-    } else {
-        return "FINAL: YOU LOOSE!"
-    }
-}
+// function game() {
+//     let score = 0
+//     for (let i = 0; i < 5; i++) {
+//         const cs = computerSelection()
+//         const ps = playerSelection()
+//         console.log("The Computer Chose " + cs + " And You Chose " + ps)
+//         console.log(playRound(cs,ps))
+//         const pg = playRound(cs,ps)
+//         if (pg.substring(0,8) === "You Win!") {
+//             score++
+//         }
+//         if (pg === "You Drew!" || pg === "You Entered A Incorrect Value") {
+//             i--
+//         }
+//      }
+//     if (score > 2) {
+//         return "FINAL: YOU WIN!"
+//     } else {
+//         return "FINAL: YOU LOOSE!"
+//     }
+// }
 
-console.log(game())
+// console.log(game())
 
 // const cs = computerSelection()
-// const ps = playerSelection()
+// const ps = playerSelection()?
 // console.log("The Computer Chose " + cs + " And You Chose " + ps)
 // console.log(playRound(cs,ps))
+
+
+
+
+//Button Click Code\\
+const rock = document.querySelector('.rock');
+rock.addEventListener('click', () => {
+  let cs = computerSelection()
+  ps = "Rock";
+  console.log("The Computer Chose " + cs + " And You Chose " + ps)
+  console.log(playRound(computerSelection(),playerSelection()))
+});
+
+const paper = document.querySelector('.paper');
+paper.addEventListener('click', () => {
+  let cs = computerSelection()
+  ps = "Paper";
+  console.log("The Computer Chose " + cs + " And You Chose " + ps)
+  console.log(playRound(computerSelection(),playerSelection()))
+});
+
+const scissors = document.querySelector('.scissors');
+scissors.addEventListener('click', () => {
+  let cs = computerSelection()
+  ps = "Scissors";
+  console.log("The Computer Chose " + cs + " And You Chose " + ps)
+  console.log(playRound(computerSelection(),playerSelection()))
+});
