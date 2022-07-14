@@ -1,6 +1,5 @@
 let ps = ""
 let cs = ""
-let result = ""
 let score = 0
 let gamesPlayed = 0
 let gameResultText = 0
@@ -63,13 +62,15 @@ function game() {
         //     i--
         // }
     //  }
-    gamesPlayed++
-    if (result.substring(0,8) === "You Win!") {
+    
+    if (round === "You Drew!" || round === "You Entered A Incorrect Value") {
+        
+    } else gamesPlayed++
+
+    if (round.substring(0,8) === "You Win!") {
         score++
     }
-    if (result === "You Drew!" || result === "You Entered A Incorrect Value") {
-        gamesPlayed--
-    }
+    
     switch (gamesPlayed) {
         case 0:
             gameResultText = 'You Have 5 Games Left'
@@ -84,7 +85,7 @@ function game() {
             gameResultText = 'You Have 2 Games Left'
             break;
         case 4:
-            gameResultText = 'You Have 1 Games Left'
+            gameResultText = 'You Have 1 Game Left'
             break;
         case 5:
             if (score > 2) {
