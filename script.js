@@ -1,4 +1,5 @@
 let ps = ""
+let cs = ""
 
 const container = document.querySelector('#container');
 const roundText = document.createElement('p');
@@ -28,7 +29,7 @@ function playRound(computerSelection,playerSelection) {
     } else if (computerSelection==="Rock" && playerSelection==="Paper") {
         return "You Win! Paper beats Rock"
     } else if (computerSelection==="Rock" && playerSelection==="Scissors") {
-        return "You Lose! Scissors beats Rock"
+        return "You Lose! Rock beats Scissors"
     } else if (computerSelection==="Paper" && playerSelection==="Rock") {
         return "You Lose! Paper beats Rock"
     } else if (computerSelection==="Paper" && playerSelection==="Scissors") {
@@ -83,26 +84,37 @@ const scissors = document.querySelector('.scissors');
 
 rock.addEventListener('click', () => {
    ps = "Rock" 
+   cs = computerSelection()
    buttonChoice();
   });
 // paper.addEventListener('click' , buttonChoice, ps="Paper");
 paper.addEventListener('click', () => {
     ps = "Paper" 
+    cs = computerSelection()
    buttonChoice();
    });
 // scissors.addEventListener('click' , buttonChoice, ps="scissors");
 scissors.addEventListener('click', () => {
     ps = "Scissors" 
+    cs = computerSelection()
    buttonChoice();
    });
 
 function buttonChoice() {
+
+    
+
     const choices = document.createElement('p');
-    choices.classList.add('ex1');
-    choices.textContent = 'The Computer chose ' + computerSelection() + ' And You Chose ' + playerSelection();
+    // choices.classList.add('ex1');
+    choices.textContent = 'The Computer chose ' + cs + ' And You Chose ' + playerSelection();
     container.appendChild(choices)
     
-    console.log("The Computer Chose " + computerSelection() + " And You Chose " + playerSelection())
+    const roundResult = document.createElement('p');
+    // roundResult.classList.add()
+    roundResult.textContent = playRound(cs,ps)
+    container.appendChild(roundResult)
+
+    // console.log("The Computer Chose " + computerSelection() + " And You Chose " + playerSelection())
 }
 
 // rock.addEventListener('click', () => {
