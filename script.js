@@ -1,9 +1,14 @@
 let ps = ""
 let cs = ""
+let result = ""
+let score = 0
+let gamesPlayed = 0
+let gameResultText = 0
 
 const container = document.querySelector('#container');
-const roundText = document.createElement('p');
-roundText.classList.add('roundText')
+const results = document.querySelector('#results');
+// const roundText = document.createElement('p');
+// roundText.classList.add('roundText')
 
 
 
@@ -44,29 +49,56 @@ function playRound(computerSelection,playerSelection) {
 
 }
 
-// function game() {
-//     let score = 0
-//     for (let i = 0; i < 5; i++) {
-//         const cs = computerSelection()
-//         const ps = playerSelection()
-//         console.log("The Computer Chose " + cs + " And You Chose " + ps)
-//         console.log(playRound(cs,ps))
-//         const pg = playRound(cs,ps)
-//         if (pg.substring(0,8) === "You Win!") {
-//             score++
-//         }
-//         if (pg === "You Drew!" || pg === "You Entered A Incorrect Value") {
-//             i--
-//         }
-//      }
-//     if (score > 2) {
-//         return "FINAL: YOU WIN!"
-//     } else {
-//         return "FINAL: YOU LOOSE!"
-//     }
-// }
+function game() {
+    // for (let i = 0; i < 5; i++) {
+        // const cs = computerSelection()
+        // const ps = playerSelection()
+        // console.log("The Computer Chose " + cs + " And You Chose " + ps)
+        // console.log(playRound(cs,ps))
+        // const pg = playRound(cs,ps)
+        // if (pg.substring(0,8) === "You Win!") {
+        //     score++
+        // }
+        // if (pg === "You Drew!" || pg === "You Entered A Incorrect Value") {
+        //     i--
+        // }
+    //  }
+    gamesPlayed++
+    if (result.substring(0,8) === "You Win!") {
+        score++
+    }
+    if (result === "You Drew!" || result === "You Entered A Incorrect Value") {
+        gamesPlayed--
+    }
+    switch (gamesPlayed) {
+        case 0:
+            gameResultText = 'You Have 5 Games Left'
+            break;
+        case 1:
+            gameResultText = 'You Have 4 Games Left'
+            break;
+        case 2:
+            gameResultText = 'You Have 3 Games Left'
+            break;
+        case 3:
+            gameResultText = 'You Have 2 Games Left'
+            break;
+        case 4:
+            gameResultText = 'You Have 1 Games Left'
+            break;
+        case 5:
+            if (score > 2) {
+                gameResultText = 'FINAL: YOU WIN!'
+            } else {
+                gameResultText = 'FINAL: YOU LOOSE!'
+            }
+            break;
+        default:
+            break;
+    }
+    
+}
 
-// console.log(game())
 
 // const cs = computerSelection()
 // const ps = playerSelection()?
@@ -101,18 +133,21 @@ scissors.addEventListener('click', () => {
    });
 
 function buttonChoice() {
-
-    
-
     const choices = document.createElement('p');
-    // choices.classList.add('ex1');
     choices.textContent = 'The Computer chose ' + cs + ' And You Chose ' + playerSelection();
-    container.appendChild(choices)
+    results.appendChild(choices)
     
+    round = playRound(cs,ps)
+    game()
     const roundResult = document.createElement('p');
-    // roundResult.classList.add()
-    roundResult.textContent = playRound(cs,ps)
-    container.appendChild(roundResult)
+    roundResult.textContent = round
+    results.appendChild(roundResult)
+
+    const gameResult = document.createElement('p')
+    gameResult.textContent = gameResultText
+    results.appendChild(gameResult)
+
+    
 
     // console.log("The Computer Chose " + computerSelection() + " And You Chose " + playerSelection())
 }
