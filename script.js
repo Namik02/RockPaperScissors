@@ -14,7 +14,9 @@ function computerSelection() {
 function playerSelection() {
     // let pInput = prompt("Play by entering Rock/Paper/Scissors")
     // const pInput1 = pInput.substring(0,1).toUpperCase() + pInput.substring(1).toLowerCase()
-
+    // rock.onclick = () => ps = "rock"
+    // paper.onclick = () => ps = "paper"
+    // scissors.onclick = () => ps = "scissors"
     return ps
 }
 
@@ -79,14 +81,28 @@ const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
 
 
-rock.addEventListener('click' , buttonChoice, ps="Rock");
-paper.addEventListener('click' , buttonChoice, ps="Paper");
-scissors.addEventListener('click' , buttonChoice, ps="Scissors");
+rock.addEventListener('click', () => {
+   ps = "Rock" 
+   buttonChoice();
+  });
+// paper.addEventListener('click' , buttonChoice, ps="Paper");
+paper.addEventListener('click', () => {
+    ps = "Paper" 
+   buttonChoice();
+   });
+// scissors.addEventListener('click' , buttonChoice, ps="scissors");
+scissors.addEventListener('click', () => {
+    ps = "Scissors" 
+   buttonChoice();
+   });
 
 function buttonChoice() {
+    const choices = document.createElement('p');
+    choices.classList.add('ex1');
+    choices.textContent = 'The Computer chose ' + computerSelection() + ' And You Chose ' + playerSelection();
+    container.appendChild(choices)
     
-    let cs = computerSelection()
-    console.log("The Computer Chose " + cs + " And You Chose " + ps)
+    console.log("The Computer Chose " + computerSelection() + " And You Chose " + playerSelection())
 }
 
 // rock.addEventListener('click', () => {
@@ -101,23 +117,23 @@ function buttonChoice() {
 // });
 
 
-paper.addEventListener('click', () => {
-  let cs = computerSelection()
-  ps = "Paper";
-  console.log("The Computer Chose " + cs + " And You Chose " + ps)
-  console.log(playRound(computerSelection(),playerSelection()))
+// paper.addEventListener('click', () => {
+//   let cs = computerSelection()
+//   ps = "Paper";
+//   console.log("The Computer Chose " + cs + " And You Chose " + ps)
+//   console.log(playRound(computerSelection(),playerSelection()))
 
-  roundText.textContent = 'This ';
-  container.appendChild(roundText)
-});
+//   roundText.textContent = 'This ';
+//   container.appendChild(roundText)
+// });
 
 
-scissors.addEventListener('click', () => {
-  let cs = computerSelection()
-  ps = "Scissors";
-  console.log("The Computer Chose " + cs + " And You Chose " + ps)
-  console.log(playRound(computerSelection(),playerSelection()))
-});
+// scissors.addEventListener('click', () => {
+//   let cs = computerSelection()
+//   ps = "Scissors";
+//   console.log("The Computer Chose " + cs + " And You Chose " + ps)
+//   console.log(playRound(computerSelection(),playerSelection()))
+// });
 
 
 
