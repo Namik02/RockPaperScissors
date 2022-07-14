@@ -1,9 +1,16 @@
+let ps = ""
+
+const container = document.querySelector('#container');
+const roundText = document.createElement('p');
+roundText.classList.add('roundText')
+
+
+
 function computerSelection() {
     const options = ["Rock", "Paper", "Scissors"]
     const cInput = options[Math.floor(Math.random() * 3)]
     return cInput
 }
-let ps = ""
 function playerSelection() {
     // let pInput = prompt("Play by entering Rock/Paper/Scissors")
     let pInput = ps
@@ -73,6 +80,10 @@ rock.addEventListener('click', () => {
   ps = "Rock";
   console.log("The Computer Chose " + cs + " And You Chose " + ps)
   console.log(playRound(computerSelection(),playerSelection()))
+  
+
+  roundText.textContent = 'The Computer Chose '  + cs +  ' And You Chose ' + ps;
+  container.appendChild(roundText)
 });
 
 const paper = document.querySelector('.paper');
@@ -81,6 +92,9 @@ paper.addEventListener('click', () => {
   ps = "Paper";
   console.log("The Computer Chose " + cs + " And You Chose " + ps)
   console.log(playRound(computerSelection(),playerSelection()))
+
+  roundText.textContent = 'This ';
+  container.appendChild(roundText)
 });
 
 const scissors = document.querySelector('.scissors');
@@ -90,3 +104,11 @@ scissors.addEventListener('click', () => {
   console.log("The Computer Chose " + cs + " And You Chose " + ps)
   console.log(playRound(computerSelection(),playerSelection()))
 });
+
+
+
+
+
+
+
+
