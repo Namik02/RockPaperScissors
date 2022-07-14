@@ -13,8 +13,8 @@ function computerSelection() {
 }
 function playerSelection() {
     // let pInput = prompt("Play by entering Rock/Paper/Scissors")
-    let pInput = ps
     // const pInput1 = pInput.substring(0,1).toUpperCase() + pInput.substring(1).toLowerCase()
+
     return ps
 }
 
@@ -75,18 +75,32 @@ function playRound(computerSelection,playerSelection) {
 
 //Button Click Code\\
 const rock = document.querySelector('.rock');
-rock.addEventListener('click', () => {
-  let cs = computerSelection()
-  ps = "Rock";
-  console.log("The Computer Chose " + cs + " And You Chose " + ps)
-  console.log(playRound(computerSelection(),playerSelection()))
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+
+
+rock.addEventListener('click' , buttonChoice, ps="Rock");
+paper.addEventListener('click' , buttonChoice, ps="Paper");
+scissors.addEventListener('click' , buttonChoice, ps="Scissors");
+
+function buttonChoice() {
+    
+    let cs = computerSelection()
+    console.log("The Computer Chose " + cs + " And You Chose " + ps)
+}
+
+// rock.addEventListener('click', () => {
+//   let cs = computerSelection()
+//   ps = "Rock";
+//   console.log("The Computer Chose " + cs + " And You Chose " + ps)
+//   console.log(playRound(computerSelection(),playerSelection()))
   
 
-  roundText.textContent = 'The Computer Chose '  + cs +  ' And You Chose ' + ps;
-  container.appendChild(roundText)
-});
+//   roundText.textContent = 'The Computer Chose '  + cs +  ' And You Chose ' + ps;
+//   container.appendChild(roundText)
+// });
 
-const paper = document.querySelector('.paper');
+
 paper.addEventListener('click', () => {
   let cs = computerSelection()
   ps = "Paper";
@@ -97,7 +111,7 @@ paper.addEventListener('click', () => {
   container.appendChild(roundText)
 });
 
-const scissors = document.querySelector('.scissors');
+
 scissors.addEventListener('click', () => {
   let cs = computerSelection()
   ps = "Scissors";
